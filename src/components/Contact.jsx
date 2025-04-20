@@ -1,6 +1,3 @@
-
-
-
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -18,21 +15,33 @@ const Contact = () => {
     message: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+
+    // Clear error as user types
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.name.trim()) newErrors.name = "Name is required.";
+    if (!form.email.trim()) newErrors.email = "Email is required.";
+    else if (!/\S+@\S+\.\S+/.test(form.email))
+      newErrors.email = "Email format is invalid.";
+    if (!form.message.trim()) newErrors.message = "Message is required.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation check
-    if (!form.name || !form.email || !form.message) {
-      alert("Please fill in all fields before submitting.");
-      return;
-    }
+    if (!validateForm()) return;
 
     setLoading(true);
 
@@ -77,41 +86,58 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className="mt-12 flex flex-col gap-8"
         >
+          {/* Name Field */}
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Name</span>
+            <span className="text-white font-medium mb-2">Your Name</span>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-              // style={{ border: !form.name ? "1px solid red" : "none" }}
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
+                errors.name ? "border-2 border-red-500" : "border-none"
+              }`}
             />
+            {errors.name && (
+              <span className="text-red-400 text-sm mt-1">{errors.name}</span>
+            )}
           </label>
+
+          {/* Email Field */}
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your email</span>
+            <span className="text-white font-medium mb-2">Your Email</span>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               placeholder="What's your web address?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-              // style={{ border: !form.email ? "1px solid red" : "none" }}
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
+                errors.email ? "border-2 border-red-500" : "border-none"
+              }`}
             />
+            {errors.email && (
+              <span className="text-red-400 text-sm mt-1">{errors.email}</span>
+            )}
           </label>
+
+          {/* Message Field */}
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Message</span>
+            <span className="text-white font-medium mb-2">Your Message</span>
             <textarea
               rows={7}
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-              // style={{ border: !form.message ? "1px solid red" : "none" }}
+              placeholder="What do you want to say?"
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
+                errors.message ? "border-2 border-red-500" : "border-none"
+              }`}
             />
+            {errors.message && (
+              <span className="text-red-400 text-sm mt-1">{errors.message}</span>
+            )}
           </label>
 
           <button
@@ -134,3 +160,4 @@ const Contact = () => {
 };
 
 export default SectionWrapper(Contact, "contact");
+
