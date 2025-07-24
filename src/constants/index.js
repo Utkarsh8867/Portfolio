@@ -220,12 +220,12 @@ const projects = [
     source_code_link: "https://github.com/Utkarsh8867/Farmer-Market-Productstore",
   },
   {
-    name: "Job IT",
+    name: "JEE Charbot App",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "This project is a starting point for a Flutter application.",
     tags: [
       {
-        name: "react",
+        name: "Flutter",
         color: "blue-text-gradient",
       },
       {
@@ -238,7 +238,7 @@ const projects = [
       },
     ],
     image: jobit,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/Utkarsh8867/JEE_preparation_Chatbot_app",
   },
   {
     name: "Trip Guide",
