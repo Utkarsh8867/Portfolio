@@ -221,7 +221,7 @@ const projects = [
     source_code_link: "https://github.com/Utkarsh8867/Farmer-Market-Productstore",
   },
   {
-    name: "JEE Charbot App",
+    name: "JEE Preparation App",
     description:
       "This project is a starting point for a Flutter application.",
     tags: [
