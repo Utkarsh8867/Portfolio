@@ -19,7 +19,7 @@ import {
   starbucks,
   tesla,
   shopify,
-  
+  jobit1,
   carrent,
   jobit,
   tripguide,
