@@ -233,11 +233,11 @@ const projects = [
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "UI",
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
+    image: jobit1,
     source_code_link: "https://github.com/Utkarsh8867/JEE_preparation_Chatbot_app",
   },
   {
