@@ -30,6 +30,14 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import jobit1 from "./jobit1.png";
 import tripguide from "./tripguide.png";
+import sudharnayak from "./tripguide.png";
+import cipherbyte from "./A.jpeg";
+import cipherbytecert from "./c.png";
+// Certificate images
+import googlecert from "./g.png";
+import datacampcert from "./d.png";
+import techgeekcert from "./t.jpg";
+import javacert from "./cy.png";
 
 export {
   logo,
@@ -61,4 +69,11 @@ export {
   jobit,
   jobit1,
   tripguide,
+  sudharnayak,
+  cipherbyte,
+  cipherbytecert,
+  googlecert,
+  datacampcert,
+  techgeekcert,
+  javacert,
 };

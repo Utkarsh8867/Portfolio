@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -13,6 +13,14 @@ import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleClick = () => {
+    if (experience.certificate) {
+      setIsFlipped(!isFlipped);
+    }
+  };
+
   return (
     <VerticalTimelineElement
       contentStyle={{
@@ -23,7 +31,11 @@ const ExperienceCard = ({ experience }) => {
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
-        <div className='flex justify-center items-center w-full h-full'>
+        <div
+          className='flex justify-center items-center w-full h-full'
+          onClick={handleClick}
+          style={{ cursor: experience.certificate ? 'pointer' : 'default' }}
+        >
           <img
             src={experience.icon}
             alt={experience.company_name}
@@ -32,26 +44,48 @@ const ExperienceCard = ({ experience }) => {
         </div>
       }
     >
-      <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
-        <p
-          className='text-secondary text-[16px] font-semibold'
-          style={{ margin: 0 }}
-        >
-          {experience.company_name}
-        </p>
-      </div>
+      {!isFlipped ? (
+        <div onClick={handleClick} style={{ cursor: experience.certificate ? 'pointer' : 'default' }}>
+          <div>
+            <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
+            <p
+              className='text-secondary text-[16px] font-semibold'
+              style={{ margin: 0 }}
+            >
+              {experience.company_name}
+            </p>
+          </div>
 
-      <ul className='mt-5 list-disc ml-5 space-y-2'>
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
-          >
-            {point}
-          </li>
-        ))}
-      </ul>
+          <ul className='mt-5 list-disc ml-5 space-y-2'>
+            {experience.points.map((point, index) => (
+              <li
+                key={`experience-point-${index}`}
+                className='text-white-100 text-[14px] pl-1 tracking-wider'
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+          {experience.certificate && (
+            <p className='text-secondary text-[12px] mt-4 italic'>
+              Click to view certificate
+            </p>
+          )}
+        </div>
+      ) : (
+        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+          <div className='flex flex-col items-center justify-center'>
+            <img
+              src={experience.certificate}
+              alt={`${experience.title} Certificate`}
+              className='w-full h-auto object-contain rounded-lg'
+            />
+            <p className='text-secondary text-[12px] mt-4 italic text-center'>
+              Click to go back
+            </p>
+          </div>
+        </div>
+      )}
     </VerticalTimelineElement>
   );
 };

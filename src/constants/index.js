@@ -24,7 +24,13 @@ import {
   jobit,
   tripguide,
   threejs,
-  
+  sudharnayak,
+  cipherbyte,
+  cipherbytecert,
+  googlecert,
+  datacampcert,
+  techgeekcert,
+  javacert,
 } from "../assets";
 
 export const navLinks = [
@@ -123,6 +129,7 @@ const experiences = [
     icon: starbucks,
     iconBg: "#383E56",
     date: "Sep 2023 - Nov 2023",
+    certificate: googlecert,
     points: [
       "Gained foundational knowledge of cloud computing and Google Cloud’s core services.",
       "Learned how cloud technology supports digital transformation and business strategy.",
@@ -136,6 +143,7 @@ const experiences = [
     icon: tesla,
     iconBg: "#E6DEDD",
     date: "June 2024 - Aug 2024",
+    certificate: datacampcert,
     points: [
       "Analyzed datasets to extract insights and support data-driven decision-making.",
       "Created dashboards and visualizations using tools like Excel, Power BI, or Tableau.",
@@ -149,6 +157,7 @@ const experiences = [
     icon: shopify,
     iconBg: "#383E56",
     date: "Jan 2025 - Feb 2025",
+    certificate: techgeekcert,
     points: [
       "Assisted in maintaining and updating website content to ensure accuracy and performance.",
       "Monitored site traffic, uptime, and user engagement using web analytics tools.",
@@ -158,15 +167,31 @@ const experiences = [
   },
   {
     title: "Java Programmer Intern",
-    company_name: "CipheByte Technologies",
+    company_name: "CipherByte Technologies",
     icon: meta,
     iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
+    date: "Jan 2023 - Apr 2025",
+    certificate: javacert,
     points: [
       "Developed and debugged Java-based applications and features as part of the development team.",
       "Worked with OOP concepts, data structures, and algorithms to build efficient code.",
       "Participated in backend development tasks, including database integration using JDBC/MySQL.",
       "Collaborated in Agile environments and used version control tools like Git for project management.",
+    ],
+  },
+  {
+    title: "MERN Stack Developer Intern",
+    company_name: "Adscart Solutions",
+    icon: cipherbyte,
+    iconBg: "#383E56",
+    date: "Aug 2025 - Nov 2025",
+    certificate: cipherbytecert,
+    points: [
+      "Built full-stack web applications using MongoDB, Express.js, React.js, and Node.js.",
+      "Developed RESTful APIs and integrated them with React frontend for seamless data flow.",
+      "Implemented user authentication, authorization, and session management using JWT.",
+      "Worked on responsive UI design and state management using React hooks and Context API.",
+      "Collaborated with team members using Git for version control and Agile methodologies.",
     ],
   },
 ];
@@ -242,25 +267,25 @@ const projects = [
     source_code_link: "https://github.com/Utkarsh8867/JEE_preparation_Chatbot_app",
   },
   {
-    name: "Trip Guide",
+    name: "SudharNayak",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "A modern, responsive web application for reporting and tracking civic issues. Features include secure authentication, real-time updates, image upload with Cloudinary, geolocation, like & comment system, and admin dashboard for issue management.",
     tags: [
       {
-        name: "nextjs",
+        name: "MERN",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "cloudinary",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "geolocation",
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    image: sudharnayak,
+    source_code_link: "https://github.com/Utkarsh8867/SudharNayak",
   },
 ];
 
