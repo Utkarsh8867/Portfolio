@@ -24,7 +24,6 @@ import {
   jobit,
   tripguide,
   threejs,
-  sudharnayak,
   cipherbyte,
   cipherbytecert,
   googlecert,
@@ -184,7 +183,7 @@ const experiences = [
     company_name: "Adscart Solutions",
     icon: cipherbyte,
     iconBg: "#383E56",
-    date: "Aug 2025 - Nov 2025",
+    date: "Completed",
     certificate: cipherbytecert,
     points: [
       "Built full-stack web applications using MongoDB, Express.js, React.js, and Node.js.",
@@ -225,51 +224,9 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Farmer's Market Place",
-    description:
-      "A modern web application built with Next.js to connect farmers directly with consumers for buying and selling fresh produce.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: carrent,
-    source_code_link: "https://github.com/Utkarsh8867/Farmer-Market-Productstore",
-  },
-  {
-    name: "JEE Preparation App",
-    description:
-      "This project is a starting point for a Flutter application.",
-    tags: [
-      {
-        name: "Flutter",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "UI",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: jobit1,
-    source_code_link: "https://github.com/Utkarsh8867/JEE_preparation_Chatbot_app",
-  },
-  {
     name: "SudharNayak",
     description:
-      "A modern, responsive web application for reporting and tracking civic issues. Features include secure authentication, real-time updates, image upload with Cloudinary, geolocation, like & comment system, and admin dashboard for issue management.",
+      "• Modern web app for reporting and tracking civic issues\n• Real-time updates with image upload and geolocation\n• Admin dashboard for managing and resolving issues",
     tags: [
       {
         name: "MERN",
@@ -284,8 +241,119 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: sudharnayak,
+    image: "/i/sudharnayak.png",
     source_code_link: "https://github.com/Utkarsh8867/SudharNayak",
+    live_link: "https://sudharnayak.netlify.app/",
+  },
+  {
+    name: "SkillSwaps",
+    description:
+      "• Platform for skill exchange - offer skills for skills you need\n• Built for GNEC Hackathon 2025 Fall\n• Modern UI with mock data ready for backend integration",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "hackathon",
+        color: "green-text-gradient",
+      },
+      {
+        name: "UI/UX",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/i/Skillswaps.png",
+    source_code_link: "https://github.com/Utkarsh8867/SkillSwap",
+    live_link: "https://skills1wap.netlify.app",
+  },
+  {
+    name: "Transforming After-Sales Support",
+    description:
+      "• AI-powered customer service with real-time communication\n• Built for i.mobilothon 5.0 hackathon\n• Intelligent dashboards and seamless user experience",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "AI",
+        color: "green-text-gradient",
+      },
+      {
+        name: "hackathon",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/i/transformingaftersalessupport.png",
+    source_code_link: "https://github.com/Utkarsh8867/Transforming-After-Sales-Support",
+    live_link: "https://transformingaftersalessupport.netlify.app/",
+  },
+  {
+    name: "AI Daily Journal",
+    description:
+      "• Intelligent journaling assistant using AI for reflection\n• Built for First Visions: Dantause & Maestro Hackathon\n• 🏆 3rd Winner - Engaging and insightful experience",
+    tags: [
+      {
+        name: "AI",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "hackathon",
+        color: "green-text-gradient",
+      },
+      {
+        name: "winner",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/i/Aijiournal.png",
+    source_code_link: "https://github.com/Utkarsh8867/AI-Daily-Journal",
+    live_link: "https://ai-daily-journal-gamma.vercel.app",
+  },
+  {
+    name: "Farmer's Market Place",
+    description:
+      "• Connect farmers directly with consumers for fresh produce\n• Buy and sell products with secure online transactions\n• Built with Next.js for modern web experience",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/i/farmermarket.png",
+    source_code_link: "https://github.com/Utkarsh8867/Farmer-Market-Productstore",
+    live_link: "https://martfarmer.netlify.app",
+  },
+  {
+    name: "JEE Preparation App",
+    description:
+      "• Flutter application for JEE exam preparation and practice\n• Interactive learning with REST API integration\n• Modern UI for enhanced study and learning experience",
+    tags: [
+      {
+        name: "Flutter",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "restapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mobile",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: jobit1,
+    source_code_link: "https://github.com/Utkarsh8867/JEE_preparation_Chatbot_app",
+    live_link: "",
   },
 ];
 
