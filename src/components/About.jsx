@@ -10,7 +10,7 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className='xs:w-[250px] w-full max-w-[280px]'>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
@@ -21,7 +21,7 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        className='bg-tertiary rounded-[20px] py-5 px-6 sm:px-12 min-h-[280px] flex justify-evenly items-center flex-col'
       >
         <img
           src={icon}
@@ -29,7 +29,7 @@ const ServiceCard = ({ index, title, icon }) => (
           className='w-16 h-16 object-contain'
         />
 
-        <h3 className='text-white text-[20px] font-bold text-center'>
+        <h3 className='text-white text-[18px] sm:text-[20px] font-bold text-center'>
           {title}
         </h3>
       </div>
@@ -52,7 +52,7 @@ const About = () => {
         I am a Enthusiastic student with a strong foundation in software development, problem-solving, and Web development. Passionate about coding, AI, and emerging technologies, with hands-on experience in Python, Java, and full-stack web development through academic projects and internships. Adept at collaborating in team environments, quickly adapting to new challenges, and applying analytical thinking to real-world problems. Seeking opportunities to leverage technical skills and creativity in a dynamic and growth-oriented environment.
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className='mt-20 flex flex-wrap gap-6 sm:gap-10 justify-center'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

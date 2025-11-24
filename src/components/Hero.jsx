@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
-        className={`absolute inset-0 top-[120px] pb-20 max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px] pb-20 max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-3 sm:gap-5`}
       >
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
@@ -19,7 +19,7 @@ const Hero = () => {
             Hi, I'm <span className='text-[#915EFF]'>Utkarsh</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100 pb-10`}>
-            I am a Engineerng student <br className='sm:block hidden' />
+            I am a Engineering student <br className='sm:block hidden' />
             pursuing B.Tech in Computer Engineering
           </p>
         </div>

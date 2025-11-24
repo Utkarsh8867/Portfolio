@@ -1,7 +1,53 @@
-// Analytics tracking utility
-export const trackPageView = () => {
+// Analytics tracking utility using Netlify Functions
+export const trackPageView = async () => {
     try {
-        // Get existing analytics data
+        // Don't track if on analytics page
+        if (window.location.pathname === '/admin-analytics') {
+            return;
+        }
+
+        // Get visitor info
+        const userAgent = navigator.userAgent;
+        const browser = getBrowser(userAgent);
+        const device = getDevice(userAgent);
+        const visitorId = getVisitorId();
+
+        // Check if this is a unique visitor
+        const visitorKey = `visitor_${visitorId}`;
+        const isUnique = !localStorage.getItem(visitorKey);
+
+        if (isUnique) {
+            localStorage.setItem(visitorKey, new Date().toISOString());
+        }
+
+        // Send to serverless function
+        const response = await fetch('/.netlify/functions/analytics', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                visitorId,
+                browser,
+                device,
+                isUnique
+            })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('📊 Page view tracked:', data);
+        }
+    } catch (error) {
+        console.error('Analytics tracking error:', error);
+        // Fallback to localStorage if server fails
+        trackPageViewLocal();
+    }
+};
+
+// Fallback to localStorage tracking
+const trackPageViewLocal = () => {
+    try {
         const storedData = localStorage.getItem("portfolioAnalytics");
         let analytics = storedData ? JSON.parse(storedData) : {
             totalViews: 0,
@@ -10,41 +56,57 @@ export const trackPageView = () => {
             visitors: []
         };
 
-        // Get visitor info
         const userAgent = navigator.userAgent;
         const browser = getBrowser(userAgent);
         const device = getDevice(userAgent);
         const timestamp = new Date().toISOString();
-
-        // Check if this is a unique visitor
         const visitorId = getVisitorId();
         const isUniqueVisitor = !localStorage.getItem(`visitor_${visitorId}`);
 
         if (isUniqueVisitor) {
             analytics.uniqueVisitors += 1;
-            localStorage.setItem(`visitor_${visitorId}`, "true");
+            localStorage.setItem(`visitor_${visitorId}`, timestamp);
         }
 
-        // Update analytics
         analytics.totalViews += 1;
         analytics.lastVisit = timestamp;
         analytics.visitors.unshift({
             timestamp,
             browser,
             device,
-            visitorId
+            visitorId,
+            isUnique: isUniqueVisitor
         });
 
-        // Keep only last 100 visitors
         if (analytics.visitors.length > 100) {
             analytics.visitors = analytics.visitors.slice(0, 100);
         }
 
-        // Save to localStorage
         localStorage.setItem("portfolioAnalytics", JSON.stringify(analytics));
     } catch (error) {
-        console.error("Analytics tracking error:", error);
+        console.error('Local analytics error:', error);
     }
+};
+
+// Fetch analytics from server
+export const fetchAnalytics = async () => {
+    try {
+        const response = await fetch('/.netlify/functions/analytics');
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (error) {
+        console.error('Fetch analytics error:', error);
+    }
+
+    // Fallback to localStorage
+    const storedData = localStorage.getItem("portfolioAnalytics");
+    return storedData ? JSON.parse(storedData) : {
+        totalViews: 0,
+        uniqueVisitors: 0,
+        lastVisit: null,
+        visitors: []
+    };
 };
 
 // Get browser name from user agent
@@ -68,7 +130,7 @@ const getDevice = (userAgent) => {
 const getVisitorId = () => {
     let visitorId = localStorage.getItem("visitorId");
     if (!visitorId) {
-        visitorId = `visitor_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        visitorId = `visitor_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
         localStorage.setItem("visitorId", visitorId);
     }
     return visitorId;

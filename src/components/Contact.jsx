@@ -73,7 +73,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
+    <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-6 xl:gap-10 overflow-hidden">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
@@ -84,7 +84,7 @@ const Contact = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="mt-12 flex flex-col gap-8"
+          className="mt-8 sm:mt-12 flex flex-col gap-6 sm:gap-8"
         >
           {/* Name Field */}
           <label className="flex flex-col">
@@ -95,9 +95,8 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
-              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
-                errors.name ? "border-2 border-red-500" : "border-none"
-              }`}
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${errors.name ? "border-2 border-red-500" : "border-none"
+                }`}
             />
             {errors.name && (
               <span className="text-red-400 text-sm mt-1">{errors.name}</span>
@@ -113,9 +112,8 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your web address?"
-              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
-                errors.email ? "border-2 border-red-500" : "border-none"
-              }`}
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${errors.email ? "border-2 border-red-500" : "border-none"
+                }`}
             />
             {errors.email && (
               <span className="text-red-400 text-sm mt-1">{errors.email}</span>
@@ -131,9 +129,8 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="What do you want to say?"
-              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${
-                errors.message ? "border-2 border-red-500" : "border-none"
-              }`}
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium ${errors.message ? "border-2 border-red-500" : "border-none"
+                }`}
             />
             {errors.message && (
               <span className="text-red-400 text-sm mt-1">{errors.message}</span>
@@ -142,7 +139,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+            className="bg-tertiary py-3 px-6 sm:px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
           >
             {loading ? "Sending..." : "Send"}
           </button>

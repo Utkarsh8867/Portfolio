@@ -16,13 +16,26 @@ const Analytics = () => {
     const CORRECT_PASSWORD = "Nishant8867@";
 
     useEffect(() => {
-        // Load analytics data from localStorage
+        // Load analytics data from server
         if (isAuthenticated) {
             loadAnalytics();
         }
     }, [isAuthenticated]);
 
-    const loadAnalytics = () => {
+    const loadAnalytics = async () => {
+        try {
+            // Try to fetch from server first
+            const response = await fetch('/.netlify/functions/analytics');
+            if (response.ok) {
+                const data = await response.json();
+                setAnalytics(data);
+                return;
+            }
+        } catch (error) {
+            console.error('Failed to fetch from server:', error);
+        }
+
+        // Fallback to localStorage
         const storedData = localStorage.getItem("portfolioAnalytics");
         if (storedData) {
             setAnalytics(JSON.parse(storedData));
@@ -108,7 +121,7 @@ const Analytics = () => {
                     </div>
 
                     {/* Stats Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -151,7 +164,7 @@ const Analytics = () => {
                     >
                         <h2 className="text-white text-2xl font-bold mb-6">Recent Visitors</h2>
                         <div className="overflow-x-auto">
-                            <table className="w-full">
+                            <table className="w-full text-sm sm:text-base">
                                 <thead>
                                     <tr className="border-b border-secondary">
                                         <th className="text-left text-secondary py-3 px-4">#</th>
