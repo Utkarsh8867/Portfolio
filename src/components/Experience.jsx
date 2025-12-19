@@ -67,9 +67,9 @@ const ExperienceCard = ({ experience }) => {
             ))}
           </ul>
           {experience.certificate && (
-            <p className='text-secondary text-[12px] mt-4 italic'>
-              Click to view certificate
-            </p>
+            <button className='mt-4 bg-[#915EFF] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#7c3aed] transition-colors'>
+              View Certificate
+            </button>
           )}
         </div>
       ) : (
